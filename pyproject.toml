@@ -1,13 +1,28 @@
 [project]
-name = "python-starter-kit"
+name = "deeplearning-starter-kit"
 version = "0.1.0"
-description = "Python Starter Kit with Claude Code Action"
+description = "Deep Learning Starter Kit with PyTorch"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     # --- PLG 로깅/모니터링 ---
     "structlog>=25.5.0",  # 구조화된 로깅 라이브러리
+
+    # --- PyTorch (CUDA 12.4) ---
+    "torch>=2.5.0",
+    "torchvision>=0.20.0",
+    "torchaudio>=2.5.0",
 ]
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu124" }]
+torchvision = [{ index = "pytorch-cu124" }]
+torchaudio = [{ index = "pytorch-cu124" }]
 
 [dependency-groups]
 dev = [
